@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>iSoko</title>
+	<link rel="stylesheet" href="bootstrap.css">
+	<script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+</head>
+
+<body>
+
+<h1>Welcome to iSoko App!</h1>
+iSoko is an App that makes you receive amazing mobile plan offers.
+
+<ul>
+	<li>
+	Do you need unlimited nation-wide calls? :<br> 
+	
+	<select id="unlimitedNationwideCalls">
+		<option value="true">Yes</option>
+		<option value="false">No</option>
+	</select>
+
+	</li>
+<li>
+	Blabla second point
+</li>
+
+</ul>
+
+<button id="02" class="btn btn-primary">Post</button>
+
+<script>
+	var unlimitedNationwideCalls = document.getElementById("unlimitedNationwideCalls");
+	var postButton = document.getElementById("02");
+	ref = new Firebase("https://isoko.firebaseio.com");
+
+	postButton.addEventListener("click", function() {
+		ref.set({
+			unlimitedNationwideCalls: unlimitedNationwideCalls.value
+		});
+	});
+
+</script>
+
+</body>
+</html>
