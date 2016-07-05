@@ -38,7 +38,7 @@ iSoko is an App that makes you receive amazing mobile plan offers.
 	ref = new Firebase("https://isoko.firebaseio.com");
 
 	postButton.addEventListener("click", function() {
-		ref.set({
+		ref.push({
 			unlimitedNationwideCalls: unlimitedNationwideCalls.value
 		});
 	});
