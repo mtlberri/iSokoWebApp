@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html ng-app>
 <head>
 	<title>iSoko</title>
 	<link rel="stylesheet" href="bootstrap.css">
 	<script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
 </head>
 
 <body>
@@ -27,10 +28,24 @@ iSoko is an App that makes you receive amazing mobile plan offers.
 <li>
 	Blabla third point
 </li>
-
 </ul>
 
-<button id="02" class="btn btn-primary">Post</button>
+<button id="02" class="btn btn-primary">Post to Firebase!</button>
+
+<div>
+	<label>Name:</label>
+
+<input type="text" ng-model="yourName" placeholder="Enter a name here">
+<hr>
+Hello {{yourName}}!
+
+<p>This is data- binding with Angular JS. Updating live the content of the Web App with data values.</p>
+
+<hr>
+Those are the needs currently posted in Firebase:
+
+
+</div>
 
 <script>
 	var unlimitedNationwideCalls = document.getElementById("unlimitedNationwideCalls");
@@ -42,7 +57,20 @@ iSoko is an App that makes you receive amazing mobile plan offers.
 			unlimitedNationwideCalls: unlimitedNationwideCalls.value
 		});
 	});
+</script>
 
+<script>
+	var userNeeds = true;
+	ref = new Firebase("https://isoko.firebaseio.com");
+	ref.child('-KLmjPdDjePArlXFhn5p/unlimitedNationwideCalls').on('value', function(snapshot) {
+		userNeeds = snapshot.val();
+	});	
+	console.log(userNeeds);
+
+</script>
+
+<script>
+	console.log("Test console");
 </script>
 
 </body>
