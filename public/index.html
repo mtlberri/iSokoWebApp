@@ -3,8 +3,19 @@
 <head>
 	<title>iSoko</title>
 	<link rel="stylesheet" href="bootstrap.css">
-	<script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+
+	<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
+	<script>
+	  // Initialize Firebase
+	  var config = {
+	    apiKey: "AIzaSyCgKu3KYHblxM2pn3TVpjjVnyZ3ON3VqMQ",
+	    authDomain: "isoko.firebaseapp.com",
+	    databaseURL: "https://isoko.firebaseio.com",
+	    storageBucket: "project-6385217529239827313.appspot.com",
+	  };
+	  firebase.initializeApp(config);
+	</script>
+
 </head>
 
 <body>
@@ -50,27 +61,12 @@ Those are the needs currently posted in Firebase:
 <script>
 	var unlimitedNationwideCalls = document.getElementById("unlimitedNationwideCalls");
 	var postButton = document.getElementById("02");
-	ref = new Firebase("https://isoko.firebaseio.com");
 
 	postButton.addEventListener("click", function() {
-		ref.push({
+		firebase.database().ref("Needs/").push({
 			unlimitedNationwideCalls: unlimitedNationwideCalls.value
 		});
 	});
-</script>
-
-<script>
-	var userNeeds = true;
-	ref = new Firebase("https://isoko.firebaseio.com");
-	ref.child('-KLmjPdDjePArlXFhn5p/unlimitedNationwideCalls').on('value', function(snapshot) {
-		userNeeds = snapshot.val();
-	});	
-	console.log(userNeeds);
-
-</script>
-
-<script>
-	console.log("Test console");
 </script>
 
 </body>
